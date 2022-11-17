@@ -1,21 +1,31 @@
 <script>
-    const arr = ["Asset", "Price", "Value", "Expiry Date"];
+    import TransactionModal from "$lib/modals/transactionModal.svelte";
+    let openModal = false;
+    const arr = ["Futures", "Price", "Value", "Expiry Date"];
+    const dummy = [{
+        asset: "WHEAT", price:"500", value:"20000", expiryDate: Date.now()
+    }, {
+        asset: "WHEAT", price:"500", value:"20000", expiryDate: Date.now()
+    }, {
+        asset: "WHEAT", price:"500", value:"20000", expiryDate: Date.now()
+    }]
 </script>
-
-<div class="w-full h-10 grid grid-cols-6">
-    <div class="col-span-2"></div>
-    <div class="col-span-2 bg-white rounded-full p-1">
-        <div class="grid grid-cols-2 bg-neutral-100 h-full w-full rounded-full">
-            <button class="bg-yellow-400 rounded-full text-white">Investor</button>
-            <button>Farmer</button>
-        </div>
-    </div>
-    <div class="col-span-2"></div>
-</div>
-<div class="w-full bg-white rounded-xl mt-3 ">
-    <table class="w-full h-full border-b-2 border-neutral-400">
+<TransactionModal bind:isOpen={openModal}></TransactionModal>
+<div class="w-full max-w-5xl mx-auto bg-neutral-800 rounded-xl mt-3 text-white">
+    <div class="w-full h-full grid grid-cols-4">
         {#each arr as item}
-        <th class="bg-white bg-opacity-25 rounded-md p-6">{item}</th>
+        <h1 class="rounded-md px-6 py-4">{item}</h1>
+        {/each}
+    </div>
+</div>
+
+<div class="w-full max-w-5xl mx-auto bg-white rounded-xl divide-y mt-2 text-black">
+    {#each dummy as item}
+    <button on:click={()=> openModal = !openModal} class="text-left w-full h-full grid grid-cols-4">
+        <p class="px-6 py-4 font-semibold">{item.asset}</p>
+        <p class="px-6 py-4">{item.price}</p>
+        <p class="px-6 py-4">{item.value}</p>
+        <p class="px-6 py-4">{item.expiryDate}</p>
+    </button>
     {/each}
-    </table>
 </div>
