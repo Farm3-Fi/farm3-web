@@ -25,12 +25,12 @@ const connectWallet = async () => {
 </script>
 
 
-<main class=" h-screen flex flex-col overflow-x-hidden bg-yellow-300 text-white">
+<main class="bg-[url('/bg.jpg')] bg-cover h-screen flex flex-col overflow-x-hidden  text-white">
   <nav class="mx-10 mt-6 flex justify-between items-center rounded-md  sticky top-0 z-10 h-14">
     <p class="col-span-5 text-3xl font-bold text-neutral-800">HoneyLemon</p>
     <div class="h-full">
       
-      <button on:click={connectWallet} class="bg-white px-10 h-full font-semibold rounded-full text-yellow-300">{$wallet != null ? $wallet.substring(0,8) + "..." : "Connect Wallet"}</button>
+      <button on:click={connectWallet} class="bg-white px-10 h-full font-semibold rounded-full text-neutral-800 border">{$wallet != null ? $wallet.substring(0,8) + "..." : "Connect Wallet"}</button>
     </div>
   </nav>
   <div class="mx-10 z-10 mt-8 text-neutral-500">
